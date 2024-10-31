@@ -1,0 +1,73 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+
+        <img src="assets/images/oxygen-logo.png" width="250" alt="Oxygen" style="margin-bottom: -30px;">
+       
+        <div class="card p-4 shadow-xl rounded-4 border-0 px-5 pt-5 pb-4" style="width: 35rem;">
+            <h3 class="text-center mb-4 text-uppercase">Connexion</h3>
+
+                @if(credentials){
+                    <div class="alert alert-danger" role="alert">
+                        <small>{{credentials}}</small>
+                    </div>
+                }
+                
+                @if(bloquer){
+                    <div class="alert alert-danger" role="alert">
+                        <small>{{bloquer}} au <span class="fw-bold">785222794</span></small>
+                    </div>
+                }
+
+                @if(validation){
+                    <div class="alert alert-danger" role="alert">
+                        <small>{{validation}} <a routerLink="/enter-code" class="text-dark fw-bold"> Cliquez ici pour valider votre compte</a></small>
+                    </div>
+                }
+                
+            
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-4 position-relative">
+                    <label for="telephone" class="form-label">N° de téléphone</label>
+                    <input type="text" id="telephone" class="form-control py-2-5" formControlName="telephone" style="padding-left: 30px;"  placeholder="Entrez votre numéro de téléphone">
+                    <span class="position-relative" style="top: -35px; left: 7px; color: black;"><i class="fas fa-phone"></i></span>
+                    @if(telephone?.invalid && telephone?.touched){
+                        <span class="text-warning fw-bold">
+                            @if(telephone?.errors?.['required']){
+                                <small>Le numéro de numéro est requis.</small>
+                            }
+                            @if(telephone?.errors?.['pattern']){
+                                <small>Le numéro doit comporter exactement 9 chiffres.</small>
+                            }
+                        </span>
+                    }
+                </div>
+                <div class="mb-4">
+                    <label for="mdp" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control py-2-5" id="mdp" formControlName="mdp"  style="padding-left: 30px;" placeholder="Entrez votre mot de passe">
+                    <span class="position-relative" style="top: -35px; left: 7px; color: black;"><i class="fas fa-lock"></i></span>
+                    @if(mdp?.invalid && mdp?.touched){
+                        <span class="text-warning fw-bold">
+                            @if(mdp?.errors?.['required']){
+                                <small>Le mot de passe est requis.</small>
+                            }
+                            @if(mdp?.errors?.['minlength']){
+                                <small>Le mot de passe doit contenir au moins 8 caractères.</small>
+                            }
+                        </span>
+                    }
+                </div>
+                <div class="d-flex justify-content-end mb-4 pb-1">
+                    <a routerLink="/forgot-password" style="color: white;">Mot de passe oublié ?</a>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn btn-light fw-bold" style="width: 150px; color: #0F766E;">S'inscrire</button>
+                    <button [disabled]="!loginForm.valid" class="btn btn-light fw-bold" style="width: 150px; color: #0F766E;">Se connecter</button>
+                </div>
+                <div class="mt-4" style="visibility: hidden;">
+                    <span class="text-danger fw-bold pe-3">Compte inactif</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
