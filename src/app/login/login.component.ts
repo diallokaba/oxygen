@@ -56,16 +56,16 @@ export class LoginComponent {
   private redirectUserByHisRole(role: string):void {
     switch (role) {
       case 'CLIENT':
-        this.router.navigate(['/dashbord-client']);
+        this.router.navigate(['/client']);
         break;
       case 'AGENT':
-        this.router.navigate(['/dashbord-distributeur']);
+        this.router.navigate(['/distributeur']);
         break;
       case 'ADMIN':
-        this.router.navigate(['/dashbord-admin']);
+        this.router.navigate(['/admin']);
         break;
       case'MARCHAND':
-        this.router.navigate(['/dashbord-marchand']);
+        this.router.navigate(['/marchand']);
         break;
       default:
         this.router.navigate(['/']);

@@ -1,1 +1,130 @@
-<p>client works!</p>
+<div class="container-fluid px-5 py-2">
+    <div class="row">
+        <div class="col-2">
+            <div class="mt-4">
+                <img class="w-75" src="assets/images/oxygen-logo.png" alt="" srcset="">
+            </div>
+            <div class="d-flex flex-column mt-5 justify-content-between" style="height: 650px;">
+                <nav class="d-flex flex-column gap-3">
+                    <a class="text-decoration-none text-black" routerLink="transaction-client" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-house pe-2"></i><span class="fw-bold">Transactions</span></a>
+                    <a class="text-decoration-none text-black" routerLink="distributeur-client" routerLinkActive="active-link"><i class="fa-solid fa-user pe-2"></i><span class="fw-bold">Distributeur</span></a>
+                    <a class="text-decoration-none text-black" routerLink="help" routerLinkActive="active-link"><i class="fa-solid fa-circle-info pe-2" style="font-size: 20px;"></i><span class="fw-bold">Aide</span></a>
+                </nav>
+                <div>
+                    <i class="fa-solid fa-arrow-left rounded-logout"></i>
+                    <span class="fw-bold">Déconnexion</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="row d-flex align-items-center">
+                <div class="col-8 d-flex align-items-center">
+                   <i class="fa fa-search" style="font-size: 22px;"></i>
+                   <input id="global-search" type="text" class="ms-3 border-0 py-2 ps-1" placeholder="Entrez votre recherche">
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    <div class="position-relative me-5">
+                        <span class="fw-bold rounded-circle text-white rounded-icon">3</span>
+                        <i class="far fa-bell fa-2x"></i>
+                    </div>
+                    <div>
+                        <img style="width: 70px; height: 70px;" class="rounded-circle" src="https://res.cloudinary.com/dwlayulto/image/upload/v1730194092/ueuqkw0oso4opgzd7vli.jpg" alt="">
+                    </div>
+                    <div class="d-flex flex-column ms-3">
+                        <span class="fw-bold pb-1">Ibrahima Kaba Diallo</span>
+                        <span class="badge bg-primary py-2 w-75" >CLIENT</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="bg-white p-3 rounded-2">
+                        <div class="row">
+                            <div class="col-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p>Solde Maximum</p>
+                                    <p class="fw-bold text-primary">{{ solde | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                </div>
+                                <span class="border-r"></span>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p>Total des transactions mensuelles autorisées</p>
+                                    <p class="fw-bold text-warning">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                </div>
+                                <span class="border-r"></span>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p><span class="fw-bold">{{actualyMonth}}</span> <br>Cumul des transactions du mois encours</p>
+                                    <p class="fw-bold text-secondary">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                </div>
+                                <span class="border-r"></span>
+                            </div>
+                            <div class="col-3 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="fw-bold">Balance</p>
+                                    @if(show){
+                                        <p class="d-flex align-items-center">
+                                            <span class="fw-bold text-success me-2">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</span> 
+                                            <i class="fa-regular fa-eye-slash cursor-p" style="font-size: 25px;" (click)="show = !show"></i>
+                                        </p>
+                                    }@else{
+                                        <p class="d-flex align-items-center">
+                                            <span class="fw-bold me-2">
+                                                <i class="fa-solid fa-circle pe-1"></i>
+                                                <i class="fa-solid fa-circle pe-1"></i>
+                                                <i class="fa-solid fa-circle pe-1"></i>
+                                                <i class="fa-solid fa-circle pe-1"></i>
+                                                <i class="fa-solid fa-circle pe-1"></i>
+                                                <i class="fa-solid fa-circle"></i>
+                                            </span> 
+                                            <i class="fa-regular fa-eye cursor-p" style="font-size: 25px;" (click)="show = !show"></i>
+                                        </p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-5 mt-3"> <!-- Utilisation de gx-3 pour gérer l'espace entre les colonnes -->
+                <div class="col-6">
+                    <div class="bg-white rounded-2 p-3 d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <img style="width: 80px;" src="assets/icones/door.png" alt="" srcset="">
+                            <p>Deplafonnement</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <img style="width: 80px;" src="assets/icones/transfer.png" alt="" srcset="">
+                            <p>Transfert</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-center gap-1">
+                            <img style="width: 80px;" src="assets/icones/phone.png" alt="" srcset="">
+                            <p>Crédit</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="bg-white rounded-2 p-3 text-center">
+                        <img style="width: 125px;" src="assets/images/qrcode.png" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div style="background-color: #48A69E; height: 100%;" class="rounded-2 p-3 text-white">
+                        <span class="badge bg-white text-black mb-1">Nouveau</span>
+                        <h3>Bienvenue sur Oxygen</h3>
+                        <h5>Faites vos transactions en toute simplicité</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="bg-white rounded-2 p-3">
+                        <router-outlet/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

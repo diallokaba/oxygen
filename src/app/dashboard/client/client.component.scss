@@ -1,0 +1,47 @@
+#global-search{
+    outline: none!important;
+    background-color: #EBF3FD!important; 
+}
+
+.rounded-icon {
+    background-color: #48A69E;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 12px;
+    bottom: 20px;
+    font-size: 13px;
+}
+
+.border-r{
+    border-right: 1px solid rgb(184, 184, 184);
+    height: 100%;
+}
+
+.cursor-p{
+    cursor: pointer;
+}
+
+.rounded-logout{
+    background-color: black;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #48A69E;
+    border-radius: 100%;
+    margin-right: 3px;
+}
+
+.active-link{
+    background-color: #48A69E!important;
+    color: white!important;
+    border-radius: 10px;
+}
+nav a{
+    padding: 12px;
+}
