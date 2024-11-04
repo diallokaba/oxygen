@@ -1,0 +1,13 @@
+// Table styling
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: #EBF3FD;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(72, 166, 158, 0.05);
+}

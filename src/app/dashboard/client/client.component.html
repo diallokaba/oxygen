@@ -6,9 +6,15 @@
             </div>
             <div class="d-flex flex-column mt-5 justify-content-between" style="height: 650px;">
                 <nav class="d-flex flex-column gap-3">
-                    <a class="text-decoration-none text-black" routerLink="transaction-client" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-house pe-2"></i><span class="fw-bold">Transactions</span></a>
-                    <a class="text-decoration-none text-black" routerLink="distributeur-client" routerLinkActive="active-link"><i class="fa-solid fa-user pe-2"></i><span class="fw-bold">Distributeur</span></a>
-                    <a class="text-decoration-none text-black" routerLink="help" routerLinkActive="active-link"><i class="fa-solid fa-circle-info pe-2" style="font-size: 20px;"></i><span class="fw-bold">Aide</span></a>
+                    <a class="text-decoration-none text-black" routerLink="transaction-client"
+                        routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"><i
+                            class="fa-solid fa-house pe-2"></i><span class="fw-bold">Transactions</span></a>
+                    <a class="text-decoration-none text-black" routerLink="distributeur-client"
+                        routerLinkActive="active-link"><i class="fa-solid fa-user pe-2"></i><span
+                            class="fw-bold">Distributeur</span></a>
+                    <a class="text-decoration-none text-black" routerLink="help" routerLinkActive="active-link"><i
+                            class="fa-solid fa-circle-info pe-2" style="font-size: 20px;"></i><span
+                            class="fw-bold">Aide</span></a>
                 </nav>
                 <div>
                     <i class="fa-solid fa-arrow-left rounded-logout"></i>
@@ -19,8 +25,9 @@
         <div class="col-10">
             <div class="row d-flex align-items-center">
                 <div class="col-8 d-flex align-items-center">
-                   <i class="fa fa-search" style="font-size: 22px;"></i>
-                   <input id="global-search" type="text" class="ms-3 border-0 py-2 ps-1" placeholder="Entrez votre recherche">
+                    <i class="fa fa-search" style="font-size: 22px;"></i>
+                    <input id="global-search" type="text" class="ms-3 border-0 py-2 ps-1"
+                        placeholder="Entrez votre recherche">
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <div class="position-relative me-5">
@@ -28,11 +35,11 @@
                         <i class="far fa-bell fa-2x"></i>
                     </div>
                     <div>
-                        <img style="width: 70px; height: 70px;" class="rounded-circle" src="https://res.cloudinary.com/dwlayulto/image/upload/v1730194092/ueuqkw0oso4opgzd7vli.jpg" alt="">
+                        <img style="width: 70px; height: 70px;" class="rounded-circle" src="{{user.photoProfile}}" alt="">
                     </div>
-                    <div class="d-flex flex-column ms-3">
-                        <span class="fw-bold pb-1">Ibrahima Kaba Diallo</span>
-                        <span class="badge bg-primary py-2 w-75" >CLIENT</span>
+                    <div class="d-flex flex-column ms-3 w-auto">
+                        <span class="fw-bold pb-1">{{user.prenom}} {{user.nom}}</span>
+                        <span class="badge bg-primary py-2">{{user.role}}</span>
                     </div>
                 </div>
             </div>
@@ -43,21 +50,23 @@
                             <div class="col-3 d-flex justify-content-between align-items-center">
                                 <div>
                                     <p>Solde Maximum</p>
-                                    <p class="fw-bold text-primary">{{ solde | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                    <p class="fw-bold text-primary">{{ compte.soldeMaximum | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
                                 </div>
                                 <span class="border-r"></span>
                             </div>
                             <div class="col-3 d-flex justify-content-between align-items-center">
                                 <div>
                                     <p>Total des transactions mensuelles autorisées</p>
-                                    <p class="fw-bold text-warning">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                    <p class="fw-bold text-warning">{{ compte.cummulTransactionMensuelle| currency: 'XOF' : 'symbol':'1.0-0' }}</p>
                                 </div>
                                 <span class="border-r"></span>
                             </div>
                             <div class="col-3 d-flex justify-content-between align-items-center">
                                 <div>
-                                    <p><span class="fw-bold">{{actualyMonth}}</span> <br>Cumul des transactions du mois encours</p>
-                                    <p class="fw-bold text-secondary">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</p>
+                                    <p><span class="fw-bold">{{actualyMonth}}</span> <br>Cumul des transactions du mois
+                                        encours</p>
+                                    <p class="fw-bold text-secondary">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}
+                                    </p>
                                 </div>
                                 <span class="border-r"></span>
                             </div>
@@ -65,22 +74,25 @@
                                 <div>
                                     <p class="fw-bold">Balance</p>
                                     @if(show){
-                                        <p class="d-flex align-items-center">
-                                            <span class="fw-bold text-success me-2">{{ total | currency: 'XOF' : 'symbol':'1.0-0' }}</span> 
-                                            <i class="fa-regular fa-eye-slash cursor-p" style="font-size: 25px;" (click)="show = !show"></i>
-                                        </p>
+                                    <p class="d-flex align-items-center">
+                                        <span class="fw-bold text-success me-2">{{ compte.solde| currency: 'XOF' :
+                                            'symbol':'1.0-0' }}</span>
+                                        <i class="fa-regular fa-eye-slash cursor-p" style="font-size: 25px;"
+                                            (click)="show = !show"></i>
+                                    </p>
                                     }@else{
-                                        <p class="d-flex align-items-center">
-                                            <span class="fw-bold me-2">
-                                                <i class="fa-solid fa-circle pe-1"></i>
-                                                <i class="fa-solid fa-circle pe-1"></i>
-                                                <i class="fa-solid fa-circle pe-1"></i>
-                                                <i class="fa-solid fa-circle pe-1"></i>
-                                                <i class="fa-solid fa-circle pe-1"></i>
-                                                <i class="fa-solid fa-circle"></i>
-                                            </span> 
-                                            <i class="fa-regular fa-eye cursor-p" style="font-size: 25px;" (click)="show = !show"></i>
-                                        </p>
+                                    <p class="d-flex align-items-center">
+                                        <span class="fw-bold me-2">
+                                            <i class="fa-solid fa-circle pe-1"></i>
+                                            <i class="fa-solid fa-circle pe-1"></i>
+                                            <i class="fa-solid fa-circle pe-1"></i>
+                                            <i class="fa-solid fa-circle pe-1"></i>
+                                            <i class="fa-solid fa-circle pe-1"></i>
+                                            <i class="fa-solid fa-circle"></i>
+                                        </span>
+                                        <i class="fa-regular fa-eye cursor-p" style="font-size: 25px;"
+                                            (click)="show = !show"></i>
+                                    </p>
                                     }
                                 </div>
                             </div>
@@ -91,7 +103,8 @@
             <div class="row gx-5 mt-3"> <!-- Utilisation de gx-3 pour gérer l'espace entre les colonnes -->
                 <div class="col-6">
                     <div class="bg-white rounded-2 p-3 d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-column align-items-center gap-1">
+                        <div class="d-flex flex-column align-items-center gap-1 cursor-p" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             <img style="width: 80px;" src="assets/icones/door.png" alt="" srcset="">
                             <p>Deplafonnement</p>
                         </div>
@@ -128,3 +141,50 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Déplafonnement-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Faire une démande de déplafonnement</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form (ngSubmit)="submitDeplafonnement()" #deplafonnementForm="ngForm" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="typePiece" class="form-label">Type de pièce</label>
+                        <select class="form-select" id="typePiece" [(ngModel)]="typePiece" name="typePiece" required>
+                            <option value="" disabled selected>Choisissez un type de pièce</option>
+                            <option value="PASSEPORT">Passeport</option>
+                            <option value="CIN">Carte d'identité</option>
+                        </select>
+                    </div>
+                    
+                    @if(typePiece === 'PASSEPORT'){
+                        <div class="mb-3">
+                            <label for="photoPiece1" class="form-label">Photo du passeport</label>
+                            <input type="file" class="form-control" id="photoPiece1" (change)="onFileSelected($event, 'photoPiece1')" accept="image/*" required />
+                        </div>
+                    }
+                    
+                    @if(typePiece === 'CIN'){
+                        <div class="mb-3">
+                            <label for="photoPiece1" class="form-label">Photo recto de la carte d'identité</label>
+                            <input type="file" class="form-control" id="photoPiece1" (change)="onFileSelected($event, 'photoPiece1')" accept="image/*" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="photoPiece2" class="form-label">Photo verso de la carte d'identité</label>
+                            <input type="file" class="form-control" id="photoPiece2" (change)="onFileSelected($event, 'photoPiece2')" accept="image/*" required />
+                        </div> 
+                    }
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" (click)="submitDeplafonnement()">Envoyer</button>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,5 +1,5 @@
 export interface IUtilisateur {
-    _id?: number;
+    _id?: string;
     nom?: string;
     prenom?: string;
     mdp?: string;
@@ -15,7 +15,7 @@ export interface IUtilisateur {
 
 export class Utilisateur implements IUtilisateur {
     constructor(
-        public _id?: number,
+        public _id?: string,
         public nom?: string,
         public prenom?: string,
         public photoProfile?: string,
