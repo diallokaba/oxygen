@@ -14,4 +14,8 @@ export class DeplafonnementService {
   getAllDeplafonnement(): Observable<Deplafonnement[]> {
     return this.http.get<Deplafonnement[]>(`${environment.apiUrl}/deplafonnement/all`);
   }
+
+  validerDeplafonnement(deplafonnementId?: string): Observable<Deplafonnement> {
+    return this.http.patch<Deplafonnement>(`${environment.apiUrl}/deplafonnement/valider/${deplafonnementId}`, {});
+  }
 }

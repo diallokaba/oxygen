@@ -31,4 +31,21 @@ export class DemandeDeplafonnementComponent implements OnInit {
       }
     });
   }
+
+  valider(deplafonnementId?: string) {
+    console.log(deplafonnementId)
+    this.deplafonnementService.validerDeplafonnement(deplafonnementId).subscribe({
+      next: (deplafonnement) => {
+        console.log(deplafonnement);
+        //update array deplafonements
+        this.all();
+        alert("Demande de déplafonnement validée avec sucees.");
+      },
+      error: (error) => {
+        console.log(error);
+        console.error("Erreur lors de la demande de déplafonnement:", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+      }
+    });
+  }
 }

@@ -27,7 +27,7 @@
                     <th scope="row"><span class="badge bg-warning text-black">{{d.status}}</span></th>
                     <th >
                         <button class="btn" title="Annuler le déplafonnement"><i style="font-size: 22px;" class="fa-solid fa-ban text-danger"></i></button>
-                        <button class="btn" title="Valider le déplafonnement"><i style="font-size: 22px;" class="fa-regular fa-circle-check text-success"></i></button>
+                        <button class="btn" title="Valider le déplafonnement" (click)="valider(d._id)"><i style="font-size: 22px;" class="fa-regular fa-circle-check text-success"></i></button>
                     </th>
                 </tr>
             }
