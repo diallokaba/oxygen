@@ -67,8 +67,8 @@ export class DistributeurComponent implements OnInit{
     this.actualyMonth = months[new Date().getMonth()];
   }
 
-  deplafonnement(){
-    console.log("deplafonnement");
+  goToDemandeDeplafonnement(){
+    this.router.navigateByUrl('/distributeur/demande-deplafonnement');
   }
 
   getCompte(){
