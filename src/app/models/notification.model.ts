@@ -4,7 +4,7 @@ export interface INotification {
     receiverId?: string;
     message?: string;
     read?: boolean;
-    createdAt?: Date;
+    date?: Date;
 }
 
 export class Notification implements INotification {

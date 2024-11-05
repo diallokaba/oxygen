@@ -45,4 +45,8 @@ export class AuthService {
     });
     return this.http.get(`${environment.apiUrl}/compte/connected-user`, {headers:headers});
   }
+
+  checkPhoneNumber(phoneNumber: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/operations/verifier-numero/${phoneNumber}`);
+  }
 }

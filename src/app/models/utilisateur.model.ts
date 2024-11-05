@@ -11,6 +11,7 @@ export interface IUtilisateur {
     codeDeVerification?: string;
     photoPiece1?: string;
     photoPiece2?: string;
+    deplafonner?: boolean;
 }
 
 export class Utilisateur implements IUtilisateur {
@@ -26,6 +27,7 @@ export class Utilisateur implements IUtilisateur {
         public codeDeVerification?: string,
         public photoPiece1?: string,
         public photoPiece2?: string,
-        public premiereConnexion?: boolean
+        public premiereConnexion?: boolean,
+        public deplafonner?: boolean
     ) {}
 }

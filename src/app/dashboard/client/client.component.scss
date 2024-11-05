@@ -139,3 +139,33 @@ nav a:hover {
 .btn-primary:hover {
     background-color: #389386;
 }
+
+//Notification
+
+.notification-list {
+    max-height: 300px;
+    width: 600px;
+    overflow-y: auto;
+    right: 0;
+    top: 40px;
+    z-index: 1000;
+}
+
+.notification-item {
+    padding: 12px;
+    border-bottom: 1px solid #aaaaaa;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    gap: 12px;
+}
+.notification-item:hover {
+    background: #f8f9fa;
+}
+.unread {
+    background: #e8f4ff;
+}
+.notification-item small {
+    color: #666;
+    display: block;
+}

@@ -145,18 +145,20 @@ nav a:hover {
 
 .notification-list {
     max-height: 300px;
-    width: 300px;
+    width: 600px;
     overflow-y: auto;
     right: 0;
-    top: 50px;
+    top: 40px;
     z-index: 1000;
 }
 
 .notification-item {
     padding: 12px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #aaaaaa;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: flex;
+    gap: 12px;
 }
 .notification-item:hover {
     background: #f8f9fa;
@@ -167,5 +169,4 @@ nav a:hover {
 .notification-item small {
     color: #666;
     display: block;
-    margin-top: 4px;
 }
